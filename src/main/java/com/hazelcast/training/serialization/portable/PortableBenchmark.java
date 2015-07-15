@@ -18,7 +18,6 @@
 package com.hazelcast.training.serialization.portable;
 
 import com.hazelcast.config.Config;
-import com.hazelcast.config.SerializationConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
@@ -68,7 +67,7 @@ public class PortableBenchmark implements ShoppingCartBenchmark {
             products[k] = "product-" + k;
         }
         Random random = new Random();
-        SerializationServiceBuilder builder = new SerializationServiceBuilder();
+        SerializationServiceBuilder builder = new DefaultSerializationServiceBuilder();
         builder.setConfig(hz.getConfig().getSerializationConfig());
         SerializationService ss = builder.build();
         int total = 0;

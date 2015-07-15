@@ -39,6 +39,7 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.nio.serialization.Data;
+import com.hazelcast.nio.serialization.DefaultSerializationServiceBuilder;
 import com.hazelcast.nio.serialization.SerializationService;
 import com.hazelcast.nio.serialization.SerializationServiceBuilder;
 import com.hazelcast.training.serialization.benchmarks.ShoppingCartBenchmark;
@@ -63,7 +64,7 @@ public class DataSerializableBenchmark implements ShoppingCartBenchmark {
             products[k] = "product-" + k;
         }
         Random random = new Random();
-        SerializationServiceBuilder builder = new SerializationServiceBuilder();
+        SerializationServiceBuilder builder = new DefaultSerializationServiceBuilder();
         builder.setConfig(hz.getConfig().getSerializationConfig());
         SerializationService ss = builder.build();
         int total = 0;
