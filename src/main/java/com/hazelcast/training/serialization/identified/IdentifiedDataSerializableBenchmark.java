@@ -21,10 +21,10 @@ import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
+import com.hazelcast.internal.serialization.SerializationService;
+import com.hazelcast.internal.serialization.SerializationServiceBuilder;
+import com.hazelcast.internal.serialization.impl.DefaultSerializationServiceBuilder;
 import com.hazelcast.nio.serialization.Data;
-import com.hazelcast.nio.serialization.DefaultSerializationServiceBuilder;
-import com.hazelcast.nio.serialization.SerializationService;
-import com.hazelcast.nio.serialization.SerializationServiceBuilder;
 import com.hazelcast.training.serialization.benchmarks.ShoppingCartBenchmark;
 
 import java.util.Date;
@@ -45,7 +45,7 @@ public class IdentifiedDataSerializableBenchmark implements ShoppingCartBenchmar
 
     public void setUp() {
         Config config = new Config();
-        if(unsafe)
+        if (unsafe)
             config.getSerializationConfig().setAllowUnsafe(unsafe).setUseNativeByteOrder(unsafe);
         config.getSerializationConfig().addDataSerializableFactory(1, new ShoppingCartDSFactory());
         hz = Hazelcast.newHazelcastInstance(config);

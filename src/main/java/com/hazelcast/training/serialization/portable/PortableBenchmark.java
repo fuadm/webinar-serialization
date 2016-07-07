@@ -21,7 +21,12 @@ import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
-import com.hazelcast.nio.serialization.*;
+import com.hazelcast.internal.serialization.SerializationService;
+import com.hazelcast.internal.serialization.SerializationServiceBuilder;
+import com.hazelcast.internal.serialization.impl.DefaultSerializationServiceBuilder;
+import com.hazelcast.nio.serialization.ClassDefinition;
+import com.hazelcast.nio.serialization.ClassDefinitionBuilder;
+import com.hazelcast.nio.serialization.Data;
 import com.hazelcast.training.serialization.benchmarks.ShoppingCartBenchmark;
 
 import java.util.Date;
