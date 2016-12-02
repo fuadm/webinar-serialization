@@ -17,6 +17,7 @@
 
 package com.hazelcast.training.serialization.benchmarks;
 
+import com.hazelcast.training.serialization.avro.AvroBenchmark;
 import com.hazelcast.training.serialization.kryo.KryoBenchmark;
 import org.openjdk.jmh.runner.RunnerException;
 
@@ -32,7 +33,8 @@ public class Benchmark {
 //        doBenchmark("Unsafe ", new IdentifiedDataSerializableBenchmark(true));
 //        doBenchmark(new PortableBenchmark(false));
 //        doBenchmark("Unsafe ", new PortableBenchmark(true));
-        doBenchmark(new KryoBenchmark());
+//        doBenchmark(new KryoBenchmark());
+        doBenchmark(new AvroBenchmark());
     }
 
     private static void doBenchmark(ShoppingCartBenchmark sb) {

@@ -1,0 +1,52 @@
+{
+  "namespace": "com.hazelcast.training.serialization.avro",
+  "type": "record",
+  "name": "ShoppingCart",
+  "fields": [
+    {
+      "name": "total",
+      "type": "long"
+    },
+    {
+      "name": "date",
+      "logicalType": "date",
+      "type": "long"
+    },
+    {
+      "name": "id",
+      "type": "long"
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "ShoppingCartItem",
+          "fields": [
+            {
+              "name": "cost",
+              "type": "long"
+            },
+            {
+              "name": "quantity",
+              "type": "int"
+            },
+            {
+              "name": "itemName",
+              "type": "string"
+            },
+            {
+              "name": "inStock",
+              "type": "boolean"
+            },
+            {
+              "name": "url",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

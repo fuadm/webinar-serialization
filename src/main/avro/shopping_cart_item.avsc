@@ -1,0 +1,27 @@
+{
+  "namespace": "com.hazelcast.training.serialization",
+  "type": "record",
+  "name": "ShoppingCartItem",
+  "fields": [
+    {
+      "name": "cost",
+      "type": "long"
+    },
+    {
+      "name": "quantity",
+      "type": "int"
+    },
+    {
+      "name": "itemName",
+      "type": "string"
+    },
+    {
+      "name": "inStock",
+      "type": "boolean"
+    },
+    {
+      "name": "url",
+      "type": "string"
+    }
+  ]
+}
