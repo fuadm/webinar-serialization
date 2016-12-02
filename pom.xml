@@ -36,11 +36,8 @@
                         <configuration>
                             <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
                             <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
-                            <includes>
-                                <include>**/*.avsc</include>
-                            </includes>
                             <imports>
-                                <import>${project.basedir}/src/main/avro/shopping_cart_item.avsc</import>
+                                <!--<import>${project.basedir}/src/main/avro/shopping_cart_item.avsc</import>-->
                                 <import>${project.basedir}/src/main/avro/shopping_cart.avsc</import>
                             </imports>
                         </configuration>

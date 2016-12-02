@@ -1,5 +1,5 @@
 {
-  "namespace": "com.hazelcast.training.serialization",
+  "namespace": "com.hazelcast.training.serialization.avro",
   "type": "record",
   "name": "ShoppingCartItem",
   "fields": [
