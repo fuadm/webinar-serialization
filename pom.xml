@@ -3,34 +3,66 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <properties>
+        <hazelcast.version>3.7.3</hazelcast.version>
+    </properties>
+
 
     <groupId>hazelcast</groupId>
     <artifactId>hazelcast-training</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-   <build>
-	<plugins>
-		<plugin>
-        		<groupId>org.apache.maven.plugins</groupId>
-        		<artifactId>maven-compiler-plugin</artifactId>
-        		<configuration>
-          			 <source>1.8</source>
-         			 <target>1.8</target>
-        		</configuration>
-      		</plugin>
-	</plugins>
-   </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>1.8.1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>schema</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+                            <imports>
+                                <!--<import>${project.basedir}/src/main/avro/shopping_cart_item.avsc</import>-->
+                                <import>${project.basedir}/src/main/avro/shopping_cart.avsc</import>
+                            </imports>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
 
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-all</artifactId>
-            <version>3.2.1</version>
+            <version>${hazelcast.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>${hazelcast.version}</version>
+            <classifier>tests</classifier>
         </dependency>
         <dependency>
             <groupId>org.hdrhistogram</groupId>
             <artifactId>HdrHistogram</artifactId>
-            <version>1.0.9</version>
+            <version>2.1.4</version>
         </dependency>
 
         <dependency>
@@ -40,14 +72,20 @@
         </dependency>
 
         <dependency>
-            <groupId>com.esotericsoftware.kryo</groupId>
+            <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
-            <version>2.24.0</version>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>javax.json</groupId>
             <artifactId>javax.json-api</artifactId>
             <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.8.1</version>
         </dependency>
 
     </dependencies>

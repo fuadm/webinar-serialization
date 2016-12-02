@@ -22,10 +22,12 @@ import com.hazelcast.config.SerializationConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
-import com.hazelcast.nio.serialization.*;
+import com.hazelcast.internal.serialization.SerializationServiceBuilder;
+import com.hazelcast.internal.serialization.impl.DefaultSerializationServiceBuilder;
+import com.hazelcast.nio.serialization.Data;
+import com.hazelcast.spi.serialization.SerializationService;
 import com.hazelcast.training.serialization.benchmarks.ShoppingCartBenchmark;
 
-import java.nio.ByteOrder;
 import java.util.Date;
 import java.util.Random;
 
@@ -49,7 +51,8 @@ public class SerializableBenchmark implements ShoppingCartBenchmark{
             products[k] = "product-" + k;
         }
         Random random = new Random();
-        SerializationServiceBuilder builder = new SerializationServiceBuilder();
+
+        SerializationServiceBuilder builder = new DefaultSerializationServiceBuilder();
         builder.setConfig(hz.getConfig().getSerializationConfig());
         SerializationService ss = builder.build();
         int total = 0;
